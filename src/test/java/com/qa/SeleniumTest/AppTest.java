@@ -78,6 +78,7 @@ public class AppTest{
 		selectLogin.sendKeys("bobo2");
 	}
 	@Test
+	@Ignore
 	public void shoppingTest() {
 		driver.get("http://automationpractice.com/index.php");
 		WebElement searchPath=driver.findElement(By.name("search_query"));
@@ -87,7 +88,17 @@ public class AppTest{
 	    Integer things= Integer.parseInt(number.getText().substring(0, 1));
 	    System.out.println(things);
 	    assertNotSame(0,things);
-	    
-	    
+	}
+	@Test
+	public void ftse() {
+		driver.get("https://www.hl.co.uk/shares/stock-market-summary/ftse-100");
+		WebElement risers=driver.findElement(By.xpath("//*[@title=\"View risers\"]"));
+		risers.sendKeys(Keys.ENTER);
+		WebElement tableStuff=driver.findElement(By.className("table-odd"));
+		System.out.println(tableStuff.getText());
+		WebElement fallers=driver.findElement(By.xpath("//*[@title=\"View fallers\"]"));
+		fallers.sendKeys(Keys.ENTER);
+		tableStuff=driver.findElement(By.className("table-odd"));
+		System.out.println(tableStuff.getText());
 	}
 }
