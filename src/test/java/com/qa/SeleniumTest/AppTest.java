@@ -25,7 +25,7 @@ public class AppTest{
 	}
 	@After
 	public void teardown() {
-		//driver.quit();
+		driver.quit();
 		
 	}
 	@Ignore
@@ -66,6 +66,7 @@ public class AppTest{
 	    assertEquals(loginSuccess.getText(),"**Successful Login**");
 	    
 	}
+	@Ignore
 	@Test
 	public void tabTest() {
 		driver.get("http://thedemosite.co.uk/");
@@ -78,6 +79,15 @@ public class AppTest{
 	}
 	@Test
 	public void shoppingTest() {
-		
+		driver.get("http://automationpractice.com/index.php");
+		WebElement searchPath=driver.findElement(By.name("search_query"));
+		searchPath.sendKeys("dress");
+		searchPath.sendKeys(Keys.ENTER);
+		WebElement number=driver.findElement(By.className("heading-counter"));
+	    Integer things= Integer.parseInt(number.getText().substring(0, 1));
+	    System.out.println(things);
+	    assertNotSame(0,things);
+	    
+	    
 	}
 }
